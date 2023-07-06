@@ -12,4 +12,4 @@ ENV TZ Asia/Tokyo
 
 CMD ["mysqld"]
 
-EXPOSE 3306
+#EXPOSE 3306

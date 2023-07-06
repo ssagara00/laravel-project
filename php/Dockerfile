@@ -18,5 +18,3 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 RUN composer global require "laravel/installer"
 
 WORKDIR /var/www
-
-EXPOSE 9000
