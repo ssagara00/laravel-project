@@ -1,0 +1,46 @@
+services:
+
+  app:
+    build: php
+    container_name: laravel_php
+    volumes:
+      - ./src:/var/www
+    ports:
+      - '9000:9000'
+    depends_on:
+      - db
+    # コンテナを永続的に起動する。
+    tty: true
+    stdin_open: true
+
+  db:
+    build: db
+    container_name: laravel_mysql
+    env_file:
+      - .env
+    volumes:
+      - mysql-volume:/var/lib/mysql
+      - ./db/my.cnf:/etc/mysql/conf.d/my.cnf
+    ports:
+      - '3306:3306'
+
+  web:
+    build: nginx
+    container_name: laravel_nginx
+    volumes:
+      - ./src:/var/www
+    ports:
+      - '81:80'
+    depends_on:
+      - app
+
+  front:
+    build: vue
+    container_name: laravel_Vue
+    volumes:
+      - ./vue:/usr/src/vue
+    ports:
+      - '8080:8080'
+
+volumes:
+  mysql-volume:
