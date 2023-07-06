@@ -9,7 +9,7 @@ services:
       - '9000:9000'
     depends_on:
       - db
-    # コンテナを永続的に起動する。
+    # コンテナを永続的に起動する
     tty: true
     stdin_open: true
 
