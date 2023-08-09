@@ -3,8 +3,7 @@ WORKDIR /usr/src/vue
 
 ENV TZ Asia/Tokyo
 
-RUN apk update && \
-    npm install -g npm @vue/cli
+RUN apk update
 
 # 開発サーバの起動
 CMD ["npm", "run", "serve"]
