@@ -1,8 +1,3 @@
-export interface Todo {
-  id: number;
-  name: string;
-}
-
 export interface StudyRecord {
   id: number;
   date: Date;
