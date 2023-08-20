@@ -1,9 +1,6 @@
 <script setup lang="ts">
-  import { mdiAccount, mdiAccountCancel } from "@mdi/js"
   import MenuHeader from "../components/MenuHeader.vue"
   import SideBar from "../components/SideBar.vue"
-  import Timer from "../components/Timer.vue"
-
 </script>
 
 <template>
@@ -19,10 +16,8 @@
           min-height="70vh"
           rounded="lg"
         >
-          <h1 class="hoge">toppage</h1>
-          <v-icon :icon="mdiAccountCancel" />
-          <v-icon :icon="mdiAccount" />
-          <Timer />
+        <h1 class="hoge">aboutpage</h1>
+          <router-link to="/">Go to home</router-link>
         </v-sheet>
       </v-col>
 

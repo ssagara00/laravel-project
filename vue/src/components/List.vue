@@ -31,9 +31,6 @@ onMounted(() => {
 <template>
   <div>
     <h1>Time List</h1>
-    <v-btn>
-      Button
-    </v-btn>
     <p v-for="record in records.studyrecords" v-bind:key="record.id">
       {{ record.hour }}
     </p>
