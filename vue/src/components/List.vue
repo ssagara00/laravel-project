@@ -4,35 +4,35 @@ import { getStudyrecords } from "../api/study_record"
 import { StudyRecord } from "../api/interface"
 
 interface State {
-  studyrecords: StudyRecord[]
+	studyrecords: StudyRecord[]
 }
 
 const records = reactive<State>({
-  studyrecords: [],
+	studyrecords: [],
 })
 
 const handleGetStudyrecords = async () => {
-  try {
-    const res = await getStudyrecords()
+	try {
+		const res = await getStudyrecords()
 
-    if (res?.status === 200) {
-      records.studyrecords = res.data
-    }
-  } catch (err) {
-    console.log(err)
-  }
+		if (res?.status === 200) {
+			records.studyrecords = res.data
+		}
+	} catch (err) {
+		console.log(err)
+	}
 }
 
 onMounted(() => {
-  handleGetStudyrecords()
+	handleGetStudyrecords()
 });
 </script>
 
 <template>
-  <div>
-    <h1>Time List</h1>
-    <p v-for="record in records.studyrecords" v-bind:key="record.id">
-      {{ record.hour }}
-    </p>
-  </div>
+	<div>
+		<h1>Time List</h1>
+		<p v-for="record in records.studyrecords" v-bind:key="record.id">
+			{{ record.hour }}
+		</p>
+	</div>
 </template>
