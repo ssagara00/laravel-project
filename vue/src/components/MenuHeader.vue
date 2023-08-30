@@ -1,6 +1,5 @@
 <script setup lang="ts">
-
-  const links = ['About','List','Dashboard','Messages','Profile','Updates']
+  const links = ['About','StudyRecord','User','Messages','Setting']
 </script>
 
 <template>

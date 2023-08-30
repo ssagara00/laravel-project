@@ -1,7 +1,7 @@
 <script setup lang="ts">
-    import MenuHeader from "../components/MenuHeader.vue"
-    import SideBar from "../components/SideBar.vue"
-    import List from "../components/List.vue"
+	import MenuHeader from "../components/MenuHeader.vue"
+	import SideBar from "../components/SideBar.vue"
+	import Studyrecord from "../components/Studyrecord.vue"
 </script>
 
 <template>
@@ -17,8 +17,8 @@
 				min-height="70vh"
 				rounded="lg"
 			>
-			<h1 class="hoge">Listpage</h1>
-				<List />
+			<h1 class="hoge">StudyRecordpage</h1>
+				<Studyrecord />
 				<router-link to="/">Go to home</router-link>
 			</v-sheet>
 		</v-col>

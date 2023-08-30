@@ -3,7 +3,8 @@
 	import MenuHeader from "../components/MenuHeader.vue"
 	import SideBar from "../components/SideBar.vue"
 	import Timer from "../components/Timer.vue"
-
+	import { useAppStore } from "../store/index"
+	const store = useAppStore()/**https://idealump.com/service/lab/194 https://qiita.com/ma7ma7pipipi/items/85bcfb6e0386fdbc9254 */
 </script>
 
 <template>
