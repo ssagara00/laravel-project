@@ -10,3 +10,8 @@ export interface User {
   name: String
   email: String
 }
+
+export interface SignInParams {
+  email: string
+  password: string
+}

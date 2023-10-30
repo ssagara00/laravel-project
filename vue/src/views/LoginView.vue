@@ -1,51 +1,53 @@
 <script setup lang="ts">
 import {ref, reactive } from "vue"
-import { User } from "../api/interface"
+import { User, SignInParams } from "../api/interface"
+import { Login, Logout } from "../api/user"
+import { useAppStore } from '../store/index'
+import axios from 'axios'
 
-const email = ref<String>("")
+  const email = ref<String>("")
+  const password = ref<String>("")
+  const testForm = ref()
+  const store = useAppStore()
 
-const requiredValidation = (value: any) => !!value || '必ず入力してください' // 入力必須の制約
-const limitLengthValidation = (value: string | any[]) => value.length <= 10 || '10文字以内で入力してください' // 文字数の制約
-/*
-ules: {
-        required: value => !!value || '入力してください',
-        email: value => /.+@.+\\..+/.test(value) || 'メールアドレスの形式が正しくありません',
-        tel: value => /^(0[5-9]0[0-9]{8}|0[1-9][1-9][0-9]{7})$/.test(value.replace(/[━.*‐.*―.*－.*\-.*ー.*\-]/gi, ''))|| '電話番号の形式が正しくありません',
-        max: value => (value && value.length <= 100) || '100文字以下で入力してください',
-      },
-*/
+  const requiredValidation = (value: any) => !!value || '必ず入力してください' // 入力必須の制約
+  const limitLengthValidation = (value: string | any[]) => value.length <= 40 || '40文字以内で入力してください' // 文字数の制約
 
-    const state = reactive({
-      // ***** (中略) *****
-      // 送信が成功したかどうかのフラグ
-      success: false,
-    })
-    const testForm = ref()
+  const login = async (data: SignInParams)  => {
+    await axios.get('http://localhost:81/sanctum/csrf-cookie', { withCredentials: true })
+      try {
+        const data = <SignInParams>{
+          email: email.value,
+          password: password.value
+        }
+          const res = await Login(data)
 
-
-  const addTask = async ()  => {
-  /*if (!taskName.value.trim()) {
-    // 入力が空orスペースのみの場合はエラーメッセージを表示
-    errorMessage.value = "入力してください。";
-    return;
-  }
-  errorMessage.value = "";*/
-
-  // 以下、フォーム、ボタン動作テスト用コード
-  /*
-  const validResult = await testForm.value.validate()
-      if (validResult.valid) {
-        state.success = true
-        const emails = email.value.trim()
-  console.log(emails)
-  //email.value = ""
-      } else {
-        state.success = false
+          if (res?.status === 200) {
+            console.log(res)
+            store.$patch({
+              name: res.data.name,
+              email: res.data.email,
+            })
+            store.setLogin()
+          }
+      } catch (err) {
+        console.log(err)
       }
-  */
+  }
 
-  // ログインテスト
-  
+  const logout = async ()  => {
+    //await axios.get('http://localhost:81/sanctum/csrf-cookie', { withCredentials: true })
+    try {
+      const res = await Logout()
+
+      if (res?.status === 200) {
+        console.log(res)
+        store.$reset()
+        store.setLogout()
+      }
+    } catch (err) {
+      console.log(err)
+    }
   }
 </script>
 
@@ -55,12 +57,16 @@ ules: {
     <v-form @submit.prevent ref="testForm">
       <v-row>
       <v-col cols="12" sm="6">
-        <!-- 新規タスクを入力するテキストフィールド -->
-        <v-text-field v-model="email" label="タスクを入力" variant="underlined" :rules="[requiredValidation, limitLengthValidation]"></v-text-field>
+        <v-text-field v-model="email" label="メアドを入力" variant="underlined" :rules="[requiredValidation, limitLengthValidation]"></v-text-field>
       </v-col>
       <v-col cols="12" sm="6">
-        <!-- 入力したタスクを追加するボタン -->
-        <v-btn @click="addTask">追加</v-btn>
+        <v-text-field v-model="password" label="パスワードを入力" variant="underlined" :rules="[requiredValidation, limitLengthValidation]"></v-text-field>
+      </v-col>
+      <v-col cols="12" sm="6">
+        <v-btn @click="login">ログイン</v-btn>
+        <v-btn @click="logout">ログアウト</v-btn>
+        <p>名前:{{ store.name }}</p>
+				<p>メールアドレス:{{ store.email }}</p>
       </v-col>
     </v-row>
     </v-form>
