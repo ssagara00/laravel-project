@@ -1,3 +1,4 @@
+import axios from 'axios'
 import client from "./api"
 import { AxiosPromise } from "axios"
 import { User, SignInParams } from "./interface"
@@ -9,6 +10,7 @@ export const getUsers = (): AxiosPromise<User[]> => {
 
 // ログイン
 export const Login = (params: SignInParams) => {
+  axios.get('http://localhost:81/sanctum/csrf-cookie', { withCredentials: true })
   return client.post("/login", params)
 }
 

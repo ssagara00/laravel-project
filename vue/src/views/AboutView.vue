@@ -1,6 +1,15 @@
 <script setup lang="ts">
 	import MenuHeader from "../components/MenuHeader.vue"
 	import SideBar from "../components/SideBar.vue"
+	import { useAppStore } from '../store/index'
+	import { useRouter } from 'vue-router'
+
+	const store = useAppStore()
+	const router = useRouter()
+	console.log(store.login)
+	if (store.login == false){
+		router.push('/login')
+	}
 </script>
 
 <template>

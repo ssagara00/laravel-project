@@ -24,10 +24,11 @@ use App\Http\Controllers\StudyRecordController;
 
 Route::middleware('auth:sanctum')->group(function () {
     //認証を必要とする機能
+    //Route::apiResource('/users', UserController::class);
+    //Route::apiResource('/studyrecords', StudyRecordController::class);
 });
 
 Route::post('/login', LoginController::class)->name('login');
 Route::post('/logout', LogoutController::class)->name('logout');
-
 Route::apiResource('/users', UserController::class);
 Route::apiResource('/studyrecords', StudyRecordController::class);
