@@ -1,7 +1,7 @@
-<script setup lang="ts">
-import { onMounted, reactive } from "vue"
-import { getUsers } from "../api/user"
-import { User } from "../api/interface"
+<script setup lang='ts'>
+import { onMounted, reactive } from 'vue'
+import { getUsers } from '../api/user'
+import { User } from '../api/interface'
 
 interface State {
 	users: User[]
@@ -34,13 +34,13 @@ onMounted(() => {
     <v-table>
       <thead>
         <tr>
-          <th class="text-left">
+          <th class='text-left'>
             都道府県
           </th>
-          <th class="text-right">
+          <th class='text-right'>
             No
           </th>
-          <th class="text-right">
+          <th class='text-right'>
             面積
           </th>
         </tr>
@@ -51,8 +51,8 @@ onMounted(() => {
 				v-bind:key="user.id"
         >
           <td>{{ user.name }}</td>
-          <td class="text-right">{{ user.name }}</td>
-          <td class="text-right">{{ user.name }}</td>
+          <td class='text-right'>{{ user.name }}</td>
+          <td class='text-right'>{{ user.name }}</td>
         </tr>
       </tbody>
     </v-table>

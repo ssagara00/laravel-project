@@ -1,28 +1,28 @@
-<script setup lang="ts">
-	import { mdiAccount, mdiAccountCancel } from "@mdi/js"
-	import MenuHeader from "../components/MenuHeader.vue"
-	import SideBar from "../components/SideBar.vue"
-	import Timer from "../components/Timer.vue"
-	import { useAppStore } from "../store/index"
+<script setup lang='ts'>
+	import { mdiAccount, mdiAccountCancel } from '@mdi/js'
+	import MenuHeader from '../components/MenuHeader.vue'
+	import SideBar from '../components/SideBar.vue'
+	import Timer from '../components/Timer.vue'
+	import { useAppStore } from '../store/index'
 	const store = useAppStore()/**https://idealump.com/service/lab/194 https://qiita.com/ma7ma7pipipi/items/85bcfb6e0386fdbc9254 */
 </script>
 
 <template>
 <MenuHeader />
 
-<v-main class="grey lighten-3">
+<v-main class='grey lighten-3'>
 	<v-container>
 		<v-row>
 			<SideBar />
 
 			<v-col>
 				<v-sheet
-					min-height="70vh"
-					rounded="lg"
+					min-height='70vh'
+					rounded='lg'
 				>
-					<h1 class="hoge">toppage</h1>
-					<v-icon :icon="mdiAccountCancel" />
-					<v-icon :icon="mdiAccount" />
+					<h1 class='hoge'>toppage</h1>
+					<v-icon :icon='mdiAccountCancel' />
+					<v-icon :icon='mdiAccount' />
 					<Timer />
 				</v-sheet>
 			</v-col>

@@ -1,7 +1,7 @@
-<script setup lang="ts">
-import { onMounted, reactive } from "vue"
-import { getStudyrecords } from "../api/studyrecord"
-import { StudyRecord } from "../api/interface"
+<script setup lang='ts'>
+import { onMounted, reactive } from 'vue'
+import { getStudyrecords } from '../api/studyrecord'
+import { StudyRecord } from '../api/interface'
 
 interface State {
 	studyrecords: StudyRecord[]
