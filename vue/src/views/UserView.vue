@@ -19,7 +19,6 @@
 				rounded='lg'
 			>
 			<h1 class='hoge'>UserListpage</h1>
-				<Test />
 				<router-link to='/'>Go to home</router-link>
 			</v-sheet>
 		</v-col>

@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { VDataTable } from 'vuetify/labs/components';
+import { VDataTable } from 'vuetify/labs/components'
+import { mdiAccount, mdiAccountCancel } from '@mdi/js'
 
 // headers を黙らせるために、readonly Headerを定義
 type UnwrapReadonlyArrayType<A> = A extends Readonly<Array<infer I>> ? UnwrapReadonlyArrayType<I> : A
@@ -45,5 +46,7 @@ const headers: ReadonlyDataTableHeader[] = [
 	<v-container class="fill-height">
 		<v-data-table :headers="headers" :items="desserts" class="elevation-1" item-value="name">
 		</v-data-table>
+    <v-icon :icon='mdiAccountCancel' />
+					<v-icon :icon='mdiAccount' />
 	</v-container>
 </template>

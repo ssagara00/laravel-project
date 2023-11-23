@@ -1,7 +1,7 @@
 <script setup lang='ts'>
 	import MenuHeader from '../components/MenuHeader.vue'
 	import SideBar from '../components/SideBar.vue'
-
+	import Timer from '../components/Timer.vue'
 </script>
 
 <template>
@@ -17,13 +17,8 @@
 					min-height='70vh'
 					rounded='lg'
 				>
-				<h1 class='hoge'>aboutpage</h1>
-					<h3>できること</h3>
-					<ul>
-						<li>勉強時間を記録できます</li>
-						<li>勉強時間を確認できます</li>
-					</ul>
-					<router-link to='/'>Go to home</router-link>
+					<h1 class='hoge'>Timer</h1>
+					<Timer />
 				</v-sheet>
 			</v-col>
 

@@ -1,5 +1,5 @@
 <script setup lang='ts'>
-  const links = ['About','StudyRecord','User','Messages','Setting']
+  const links = ['About','StudyRecord','User','Timer','Setting']
 </script>
 
 <template>
@@ -14,7 +14,7 @@
 			color='grey darken-1'
 			size='32'
 		></v-avatar>
-
+		<v-btn variant='text' href="/">Home</v-btn>
 		<v-btn variant='text'
 			v-for="link in links"
 			:key="link" :to="link"

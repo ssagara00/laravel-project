@@ -1,10 +1,6 @@
 <script setup lang='ts'>
-	import { mdiAccount, mdiAccountCancel } from '@mdi/js'
 	import MenuHeader from '../components/MenuHeader.vue'
 	import SideBar from '../components/SideBar.vue'
-	import Timer from '../components/Timer.vue'
-	import { useAppStore } from '../store/index'
-	const store = useAppStore()/**https://idealump.com/service/lab/194 https://qiita.com/ma7ma7pipipi/items/85bcfb6e0386fdbc9254 */
 </script>
 
 <template>
@@ -21,9 +17,10 @@
 					rounded='lg'
 				>
 					<h1 class='hoge'>toppage</h1>
-					<v-icon :icon='mdiAccountCancel' />
-					<v-icon :icon='mdiAccount' />
-					<Timer />
+					<h2>ようこそ</h2>
+					<router-link to='/timer'>勉強時間を記録する</router-link>
+					<br />
+					<router-link to='/login'>会員の方はこちら</router-link>
 				</v-sheet>
 			</v-col>
 
