@@ -31,7 +31,6 @@
             email: res.data.email,
           })
           store.setLogin()
-          console.log(store.login)
           router.push('/about')
         } else {
           console.log(res?.data)

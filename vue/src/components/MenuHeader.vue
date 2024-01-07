@@ -1,5 +1,25 @@
 <script setup lang='ts'>
+	import { Logout } from '../api/user'
+	import { useAppStore } from '../store/index'
+  import { useRouter } from 'vue-router'
+
   const links = ['About','StudyRecord','User','Timer','Setting']
+	const store = useAppStore()
+  const router = useRouter()
+
+	const logout = async() => {
+		try {
+      const res = await Logout()
+			if (res?.status === 200) {
+				store.$reset()
+				router.push('/login')
+			} else {
+				console.log(res?.data)
+			}
+		} catch (err) {
+			console.log(err)
+		}
+	}
 </script>
 
 <template>
@@ -9,11 +29,7 @@
 	flat
 	>
 	<v-container class='py-0 fill-height'>
-		<v-avatar
-			class='mr-10'
-			color='grey darken-1'
-			size='32'
-		></v-avatar>
+		<v-btn @click='logout' v-if="store.login == true">ログアウト</v-btn>
 		<v-btn variant='text' href="/">Home</v-btn>
 		<v-btn variant='text'
 			v-for="link in links"
