@@ -10,9 +10,6 @@ export const useAppStore = defineStore('userData', {
     setLogin(){
       this.login=true
     },
-    setLogout(){
-      this.login=false
-    },
   },
   persist: true,
 })
